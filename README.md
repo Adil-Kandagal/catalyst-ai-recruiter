@@ -11,17 +11,20 @@ Recruiters waste countless hours manually parsing resumes and chasing cold leads
 
 ```mermaid
 graph TD
-    A[Recruiter] -->|Pastes Job Description| B(Next.js Frontend)
-    B -->|POST /api/parse-jd| C{Gemini 2.5 Flash}
-    C -->|Structured JSON| B
-    B -->|POST /api/match| D{Gemini 2.5 Flash + Local DB}
-    D -->|Ranked Candidates| B
-    B -->|Initiate Chat| E(Chat Modal UI)
-    E -->|POST /api/chat| F{Gemini conversational AI}
-    E -->|Finish & Score| G{Gemini Sentiment Analysis}
-    G -->|Interest Score| B
-    B -->|Calculate Average| H[Overall Score Generated]
-    H -->|Combined Dashboard Output| A
+    A([Recruiter]) -->|1. Pastes Job Description| B[Next.js Frontend]
+    
+    B -->|2. POST /api/parse-jd| C{Gemini 2.5 Flash}
+    C -.->|Structured JSON| B
+    
+    B -->|3. POST /api/match| D[(Candidate DB Matching)]
+    D -.->|Match Score| B
+    
+    B -->|4. Initiate Chat| E[Chat Modal UI]
+    E <-->|5. Real-time Chat| F{Gemini Conversational AI}
+    E -->|6. Finish & Analyze| G{Gemini Sentiment Analysis}
+    G -.->|Interest Score| B
+    
+    B -->|7. Calculate Average| H([Combined Dashboard Output])
 ```
 
 ## 🧠 Scoring Logic & Combined Output
