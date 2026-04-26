@@ -23,7 +23,7 @@ graph TD
     B -->|Calculate Average| H[Overall Score Generated]
     H -->|Combined Dashboard Output| A
 
-    
+    ```
     
 🧠 Scoring Logic & Combined Output
 Our platform solves the "ghosting" problem in tech recruiting by evaluating candidates on multiple dimensions to provide a single, actionable metric:
