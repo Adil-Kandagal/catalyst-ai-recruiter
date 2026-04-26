@@ -25,7 +25,9 @@ graph TD
 
 
     
- Scoring Logic & Combined Output
+    
+    
+🧠 Scoring Logic & Combined Output
 Our platform solves the "ghosting" problem in tech recruiting by evaluating candidates on multiple dimensions to provide a single, actionable metric:
 
 Match Score (0-100): Generated via semantic matching. The AI compares the parsed JD requirements (skills, years of experience) against the candidate's static profile and bio.
