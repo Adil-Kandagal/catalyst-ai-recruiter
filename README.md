@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 AI-Powered Talent Scouting & Engagement Agent
+**Built for the Catalyst Hackathon**
 
-## Getting Started
+🔗 **[Live Vercel Prototype](https://catalyst-ai-recruiter.vercel.app/)**
+📹 **[Demo Video Link](https://drive.google.com/file/d/17xgFWCRCJal_sXcWjdk3Ak1Dc5j2qFo6/view?usp=drive_link)**
 
-First, run the development server:
+## Overview
+Recruiters waste countless hours manually parsing resumes and chasing cold leads. This AI Agent automates the top-of-funnel recruitment process. It takes a raw Job Description, parses it for requirements, scans a candidate database, and ranks the best fits. It then simulates a conversational outreach to assess the candidate's actual enthusiasm, outputting a highly actionable dashboard scored on three dimensions: **Match Score**, **Interest Score**, and a combined **Overall Score**.
 
-```bash
+## 🏗️ System Architecture
+
+```mermaid
+graph TD
+    A[Recruiter] -->|Pastes Job Description| B(Next.js Frontend)
+    B -->|POST /api/parse-jd| C{Gemini 2.5 Flash}
+    C -->|Structured JSON| B
+    B -->|POST /api/match| D{Gemini 2.5 Flash + Local DB}
+    D -->|Ranked Candidates| B
+    B -->|Initiate Chat| E(Chat Modal UI)
+    E -->|POST /api/chat| F{Gemini conversational AI}
+    E -->|Finish & Score| G{Gemini Sentiment Analysis}
+    G -->|Interest Score| B
+    B -->|Calculate Average| H[Overall Score Generated]
+    H -->|Combined Dashboard Output| A
+
+    
+    
+🧠 Scoring Logic & Combined Output
+Our platform solves the "ghosting" problem in tech recruiting by evaluating candidates on multiple dimensions to provide a single, actionable metric:
+
+Match Score (0-100): Generated via semantic matching. The AI compares the parsed JD requirements (skills, years of experience) against the candidate's static profile and bio.
+
+Interest Score (0-100): Generated via behavioral analysis. The AI acts as a recruiter in a simulated chat. Once the chat concludes, a separate AI route analyzes the transcript. Short, unenthusiastic answers result in a low score, while detailed, context-aware answers result in a high score.
+
+Overall Score (Combined Rank): To provide a final, actionable ranking as required by the problem statement, the system calculates the combined average of the Match and Interest scores. This allows recruiters to instantly prioritize candidates who are both highly qualified and highly engaged.
+
+
+
+📥 Sample Inputs & Outputs
+Sample Input (Job Description):
+
+"We are looking for a Full-Stack Engineer with 3+ years of experience. Must have deep technical proficiency in the MERN stack (MongoDB, Express, React, Node.js) and hands-on experience with WebSockets or Socket.io to build real-time chat applications."
+
+Sample Output (Parsed & Ranked):
+
+Candidate: Mateo Alvarez
+
+Parsed JD: Title: Full-Stack Engineer | Experience: 3+ years | Skills: MERN stack, WebSockets, Socket.io
+
+Match Score: 95/100
+
+Reasoning: "Mateo is an excellent full-stack engineer with strong Node.js and React skills, and his background in real-time communication systems aligns perfectly with the Socket.io requirements."
+
+Interest Score: 85/100 (Post-simulation chat)
+
+Overall Score: 90/100 (Final Combined Rank)
+
+
+💻 Local Setup Instructions
+If you wish to run this application locally instead of using the Vercel prototype:
+
+Clone the repository:
+git clone https://github.com/YOUR_USERNAME/catalyst-ai-recruiter.git
+
+Install dependencies:
+npm install
+
+Create a .env.local file in the root directory and add your Gemini API key:
+GEMINI_API_KEY=your_api_key_here
+
+Run the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000
