@@ -19,9 +19,22 @@ type ChatModalProps = {
   candidateId: string;
   candidateName: string;
   onClose: () => void;
+  onInterestScore?: (candidateId: string, score: InterestScoreResult) => void;
 };
 
-export default function ChatModal({ isOpen, candidateId, candidateName, onClose }: ChatModalProps) {
+function getInterestBadgeClass(score: number) {
+  if (score >= 75) return "border-emerald-300 bg-emerald-300";
+  if (score >= 40) return "border-amber-300 bg-amber-300";
+  return "border-rose-300 bg-rose-300";
+}
+
+function getInterestTextColorClass(score: number) {
+  if (score >= 75) return "text-emerald-300";
+  if (score >= 40) return "text-amber-300";
+  return "text-rose-300";
+}
+
+export default function ChatModal({ isOpen, candidateId, candidateName, onClose, onInterestScore }: ChatModalProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [candidateDraft, setCandidateDraft] = useState("");
   const [isChatLoading, setIsChatLoading] = useState(false);
@@ -92,6 +105,7 @@ export default function ChatModal({ isOpen, candidateId, candidateName, onClose 
       }
 
       setInterestScore(payload as InterestScoreResult);
+      onInterestScore?.(candidateId, payload as InterestScoreResult);
     } catch (scoreError) {
       setError(scoreError instanceof Error ? scoreError.message : "Unable to score chat.");
     } finally {
@@ -127,11 +141,20 @@ export default function ChatModal({ isOpen, candidateId, candidateName, onClose 
         </header>
 
         {interestScore && (
-          <div className="border-b border-slate-700 bg-emerald-500/10 px-5 py-3">
-            <p className="text-sm font-semibold text-emerald-300">
-              Interest Score: {interestScore.interest_score_out_of_100}/100
+          <div className="border-b border-slate-700 px-5 py-3">
+            <div className={`flex items-center gap-2 text-sm font-semibold ${getInterestTextColorClass(
+              interestScore.interest_score_out_of_100
+            )}`}>
+              <span
+                className={`inline-flex h-3 w-3 rounded-full border ${getInterestBadgeClass(
+                  interestScore.interest_score_out_of_100
+                )}`}
+              />
+              <span>Interest Score: {interestScore.interest_score_out_of_100}/100</span>
+            </div>
+            <p className="mt-1 text-sm text-slate-200/90">
+              {interestScore.interest_summary}
             </p>
-            <p className="mt-1 text-sm text-emerald-200/90">{interestScore.interest_summary}</p>
           </div>
         )}
 

@@ -18,6 +18,11 @@ type CandidateMatch = {
   match_explanation: string;
 };
 
+type InterestScoreResult = {
+  interest_score_out_of_100: number;
+  interest_summary: string;
+};
+
 type CandidateProfile = {
   id: string;
   name: string;
@@ -32,10 +37,59 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeCandidate, setActiveCandidate] = useState<CandidateProfile | null>(null);
+  const [interestScores, setInterestScores] = useState<Map<string, InterestScoreResult>>(new Map());
 
   const candidateNameById = useMemo(() => {
     return new Map(candidateDirectory.map((candidate) => [candidate.id, candidate.name]));
   }, []);
+
+  const handleInterestScoreUpdate = (candidateId: string, score: InterestScoreResult) => {
+    setInterestScores(prev => new Map(prev.set(candidateId, score)));
+  };
+
+  const getMatchScoreBadgeColor = (score: number) => {
+    if (score > 80) return "bg-green-500/20 text-green-300 border-green-500/50";
+    if (score > 60) return "bg-yellow-500/20 text-yellow-300 border-yellow-500/50";
+    return "bg-red-500/20 text-red-300 border-red-500/50";
+  };
+
+  const getInterestScoreBadgeColor = (score: number) => {
+    if (score >= 75) return "bg-emerald-500/10 text-emerald-300 border-emerald-300";
+    if (score >= 40) return "bg-amber-500/10 text-amber-300 border-amber-300";
+    return "bg-rose-500/10 text-rose-300 border-rose-300";
+  };
+
+  const getInterestScoreDotColor = (score: number) => {
+    if (score >= 75) return "bg-emerald-300";
+    if (score >= 40) return "bg-amber-300";
+    return "bg-rose-300";
+  };
+
+  const getOverallScore = (matchScore: number, interestScore: InterestScoreResult | undefined) => {
+    if (!interestScore) return null;
+    return Math.round((matchScore + interestScore.interest_score_out_of_100) / 2);
+  };
+
+  const getOverallBadgeColor = (score: number) => {
+    if (score > 80) return "bg-emerald-500/20 text-emerald-300 border-emerald-500/50";
+    if (score > 60) return "bg-yellow-500/20 text-yellow-300 border-yellow-500/50";
+    return "bg-red-500/20 text-red-300 border-red-500/50";
+  };
+
+  const sortedMatches = useMemo(() => {
+    return [...matches].sort((a, b) => {
+      const aInterest = interestScores.get(a.candidate_id);
+      const bInterest = interestScores.get(b.candidate_id);
+      const aOverall = aInterest ? (a.match_score_out_of_100 + aInterest.interest_score_out_of_100) / 2 : -1;
+      const bOverall = bInterest ? (b.match_score_out_of_100 + bInterest.interest_score_out_of_100) / 2 : -1;
+
+      if (aOverall !== bOverall) {
+        return bOverall - aOverall;
+      }
+
+      return b.match_score_out_of_100 - a.match_score_out_of_100;
+    });
+  }, [matches, interestScores]);
 
   async function handleFindCandidates() {
     const trimmedJD = jobDescription.trim();
@@ -170,36 +224,65 @@ export default function HomePage() {
             {matches.length === 0 && !isLoading ? (
               <p className="text-sm text-slate-400">Top candidates will appear here.</p>
             ) : (
-              matches.map((match) => (
-                <article
-                  key={match.candidate_id}
-                  className="rounded-xl border border-slate-800 bg-slate-950/60 p-4"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h4 className="font-semibold text-slate-100">
-                        {candidateNameById.get(match.candidate_id) ?? match.candidate_id}
-                      </h4>
-                      <p className="mt-1 text-sm text-slate-300">
-                        Match Score: {match.match_score_out_of_100}/100
-                      </p>
-                      <p className="mt-2 text-sm text-slate-400">{match.match_explanation}</p>
+              sortedMatches.map((match) => {
+                const interestScore = interestScores.get(match.candidate_id);
+                const overallScore = getOverallScore(match.match_score_out_of_100, interestScore);
+                return (
+                  <article
+                    key={match.candidate_id}
+                    className="rounded-xl border border-slate-800 bg-slate-950/60 p-4"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h4 className="font-semibold text-slate-100">
+                          {candidateNameById.get(match.candidate_id) ?? match.candidate_id}
+                        </h4>
+                        <div className="mt-2 flex gap-2">
+                          <span className={`inline-flex items-center rounded-full border px-2 py-1 text-xs font-semibold ${getMatchScoreBadgeColor(match.match_score_out_of_100)}`}>
+                            Match: {match.match_score_out_of_100}/100
+                          </span>
+                          <span className={`inline-flex items-center gap-2 rounded-full border px-2 py-1 text-xs font-semibold ${
+                            interestScore
+                              ? getInterestScoreBadgeColor(interestScore.interest_score_out_of_100)
+                              : "border-slate-600/50 bg-slate-800/50 text-slate-400"
+                          }`}>
+                            {interestScore ? (
+                              <>
+                                <span
+                                  className={`inline-flex h-2.5 w-2.5 rounded-full ${getInterestScoreDotColor(
+                                    interestScore.interest_score_out_of_100
+                                  )}`}
+                                />
+                                Interest: {interestScore.interest_score_out_of_100}/100
+                              </>
+                            ) : (
+                              "Interest: Pending"
+                            )}
+                          </span>
+                          {overallScore !== null && (
+                            <span className={`inline-flex items-center rounded-full border px-2 py-1 text-xs font-semibold ${getOverallBadgeColor(overallScore)}`}>
+                              Overall: {overallScore}/100
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-2 text-sm text-slate-400">{match.match_explanation}</p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setActiveCandidate({
+                            id: match.candidate_id,
+                            name: candidateNameById.get(match.candidate_id) ?? match.candidate_id,
+                          })
+                        }
+                        className="shrink-0 rounded-lg border border-indigo-400/50 bg-indigo-500/10 px-3 py-1.5 text-xs font-semibold text-indigo-300 transition hover:bg-indigo-500/20"
+                      >
+                        Simulate Outreach
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setActiveCandidate({
-                          id: match.candidate_id,
-                          name: candidateNameById.get(match.candidate_id) ?? match.candidate_id,
-                        })
-                      }
-                      className="shrink-0 rounded-lg border border-indigo-400/50 bg-indigo-500/10 px-3 py-1.5 text-xs font-semibold text-indigo-300 transition hover:bg-indigo-500/20"
-                    >
-                      Simulate Outreach
-                    </button>
-                  </div>
-                </article>
-              ))
+                  </article>
+                );
+              })
             )}
           </div>
           </section>
@@ -211,6 +294,7 @@ export default function HomePage() {
         candidateId={activeCandidate?.id ?? ""}
         candidateName={activeCandidate?.name ?? ""}
         onClose={() => setActiveCandidate(null)}
+        onInterestScore={handleInterestScoreUpdate}
       />
     </>
   );

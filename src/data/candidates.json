@@ -1,0 +1,272 @@
+[
+  {
+    "id": "cand-001",
+    "name": "Avery Martinez",
+    "current_role": "Senior Frontend Engineer",
+    "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Jest", "Accessibility"],
+    "years_of_experience": 8,
+    "bio": "Avery builds high-performance web interfaces for B2B SaaS products and has led the migration of two large codebases from legacy MVC frontends to modern React architectures. She partners closely with design systems teams to enforce accessibility standards and improve component reusability across product lines.",
+    "email": "avery.martinez@example.com"
+  },
+  {
+    "id": "cand-002",
+    "name": "Noah Kim",
+    "current_role": "Backend Engineer",
+    "skills": ["Node.js", "PostgreSQL", "REST APIs", "Redis", "Docker", "AWS"],
+    "years_of_experience": 6,
+    "bio": "Noah specializes in backend platform reliability, with hands-on ownership of API gateways, authentication services, and event-driven microservices. He recently reduced average endpoint latency by 38% by redesigning query strategies and introducing structured caching patterns.",
+    "email": "noah.kim@example.com"
+  },
+  {
+    "id": "cand-003",
+    "name": "Priya Desai",
+    "current_role": "Data Scientist",
+    "skills": ["Python", "Pandas", "Scikit-learn", "SQL", "A/B Testing", "Feature Engineering"],
+    "years_of_experience": 7,
+    "bio": "Priya turns ambiguous product questions into measurable experiments and predictive models that drive roadmap decisions. In her current role, she built churn and upsell propensity models used by sales and lifecycle teams, improving retention playbook targeting accuracy.",
+    "email": "priya.desai@example.com"
+  },
+  {
+    "id": "cand-004",
+    "name": "Ethan Brooks",
+    "current_role": "Product Manager",
+    "skills": ["Roadmapping", "User Research", "Agile Delivery", "SQL", "Stakeholder Management", "Product Analytics"],
+    "years_of_experience": 9,
+    "bio": "Ethan has led cross-functional product initiatives for marketplace and fintech platforms, balancing customer outcomes with business constraints. He is known for translating customer interviews and usage analytics into clear product requirements that engineering teams can execute quickly.",
+    "email": "ethan.brooks@example.com"
+  },
+  {
+    "id": "cand-005",
+    "name": "Lina Farouk",
+    "current_role": "Machine Learning Engineer",
+    "skills": ["PyTorch", "MLOps", "FastAPI", "Model Monitoring", "Kubernetes", "GCP"],
+    "years_of_experience": 5,
+    "bio": "Lina develops production ML systems end to end, from model prototyping to deployment and lifecycle monitoring. She recently implemented drift detection and automated retraining pipelines for recommendation models that serve millions of requests per day.",
+    "email": "lina.farouk@example.com"
+  },
+  {
+    "id": "cand-006",
+    "name": "Mateo Alvarez",
+    "current_role": "Full Stack Engineer",
+    "skills": ["TypeScript", "React", "Node.js", "GraphQL", "MongoDB", "CI/CD"],
+    "years_of_experience": 4,
+    "bio": "Mateo is a fast-moving full stack engineer with experience shipping internal tools and customer-facing workflows for logistics and operations teams. He thrives in startup environments where he can own features from schema design through frontend implementation and deployment.",
+    "email": "mateo.alvarez@example.com"
+  },
+  {
+    "id": "cand-007",
+    "name": "Hannah O'Neil",
+    "current_role": "DevOps Engineer",
+    "skills": ["Terraform", "AWS", "GitHub Actions", "Observability", "Linux", "Incident Response"],
+    "years_of_experience": 10,
+    "bio": "Hannah designs secure, scalable cloud infrastructure and has built CI/CD frameworks for engineering organizations ranging from 20 to 200 developers. She has led multiple reliability initiatives that improved deployment confidence and cut incident recovery times dramatically.",
+    "email": "hannah.oneil@example.com"
+  },
+  {
+    "id": "cand-008",
+    "name": "Daniel Okafor",
+    "current_role": "Mobile Engineer",
+    "skills": ["React Native", "iOS", "Android", "TypeScript", "App Performance", "Firebase"],
+    "years_of_experience": 6,
+    "bio": "Daniel builds and optimizes mobile applications with a strong focus on responsiveness, battery efficiency, and offline usability. He has shipped major app releases in healthcare and commerce, including complex onboarding and identity verification flows.",
+    "email": "daniel.okafor@example.com"
+  },
+  {
+    "id": "cand-009",
+    "name": "Sophia Nguyen",
+    "current_role": "UX/UI Designer",
+    "skills": ["Figma", "Design Systems", "Interaction Design", "Usability Testing", "Information Architecture", "Prototyping"],
+    "years_of_experience": 7,
+    "bio": "Sophia blends product strategy with interface craftsmanship to deliver intuitive experiences for complex workflows. She has built multi-brand design systems and collaborates tightly with engineering to ensure production quality matches design intent.",
+    "email": "sophia.nguyen@example.com"
+  },
+  {
+    "id": "cand-010",
+    "name": "Rohan Patel",
+    "current_role": "Security Engineer",
+    "skills": ["Threat Modeling", "Application Security", "SAST/DAST", "IAM", "SIEM", "OWASP"],
+    "years_of_experience": 8,
+    "bio": "Rohan focuses on embedding security into the software development lifecycle through pragmatic controls and developer enablement. He has rolled out organization-wide secure coding standards and automated scanning workflows that reduced critical vulnerabilities before release.",
+    "email": "rohan.patel@example.com"
+  },
+  {
+    "id": "cand-011",
+    "name": "Chloe Bennett",
+    "current_role": "Technical Recruiter",
+    "skills": ["Talent Sourcing", "Candidate Screening", "Interview Coordination", "Employer Branding", "ATS Management", "Negotiation"],
+    "years_of_experience": 5,
+    "bio": "Chloe recruits across engineering, product, and data disciplines for high-growth technology teams. She has built structured interview loops and sourcing strategies that improved diversity representation and reduced average time-to-fill for critical roles.",
+    "email": "chloe.bennett@example.com"
+  },
+  {
+    "id": "cand-012",
+    "name": "Victor Salinas",
+    "current_role": "Data Engineer",
+    "skills": ["Apache Spark", "Airflow", "dbt", "Snowflake", "Python", "Data Modeling"],
+    "years_of_experience": 9,
+    "bio": "Victor architects analytics and operational data platforms that support both BI reporting and machine learning use cases. He is experienced in building reliable ELT pipelines, enforcing data contracts, and mentoring analysts on scalable modeling practices.",
+    "email": "victor.salinas@example.com"
+  },
+  {
+    "id": "cand-013",
+    "name": "Maya Shah",
+    "current_role": "QA Automation Engineer",
+    "skills": ["Playwright", "Cypress", "API Testing", "Test Strategy", "JavaScript", "Continuous Testing"],
+    "years_of_experience": 6,
+    "bio": "Maya builds automated testing strategies that improve release confidence without slowing delivery velocity. She has implemented end-to-end and API test suites for regulated domains and introduced quality gates that significantly reduced regression defects in production.",
+    "email": "maya.shah@example.com"
+  },
+  {
+    "id": "cand-014",
+    "name": "Jonas Weber",
+    "current_role": "Engineering Manager",
+    "skills": ["Team Leadership", "Architecture Reviews", "Delivery Planning", "Mentorship", "Performance Management", "Cross-functional Collaboration"],
+    "years_of_experience": 12,
+    "bio": "Jonas leads distributed engineering teams with a focus on technical excellence and sustainable delivery practices. He has managed multiple platform and product teams, balancing hiring, execution, and long-term architectural direction during rapid growth phases.",
+    "email": "jonas.weber@example.com"
+  },
+  {
+    "id": "cand-015",
+    "name": "Zara Ibrahim",
+    "current_role": "Growth Marketing Analyst",
+    "skills": ["Marketing Analytics", "SQL", "Attribution Modeling", "Looker", "Experimentation", "Lifecycle Campaigns"],
+    "years_of_experience": 4,
+    "bio": "Zara combines analytics and channel strategy to identify high-impact growth opportunities across acquisition and retention funnels. She partners with product and marketing teams to design experiments, analyze campaign performance, and optimize lifecycle messaging.",
+    "email": "zara.ibrahim@example.com"
+  },
+  {
+    "id": "cand-016",
+    "name": "Mia Carter",
+    "current_role": "UX Researcher",
+    "skills": ["User Interviews", "Usability Testing", "Qualitative Research", "Figma", "Journey Mapping", "Workshop Facilitation"],
+    "years_of_experience": 6,
+    "bio": "Mia uncovers user needs through structured research and synthesizes findings into actionable design recommendations. She has partnered with product teams to define feature direction and improve conversion and engagement through evidence-based experience improvements.",
+    "email": "mia.carter@example.com"
+  },
+  {
+    "id": "cand-017",
+    "name": "Darius Chen",
+    "current_role": "Site Reliability Engineer",
+    "skills": ["Kubernetes", "Prometheus", "Go", "Chaos Engineering", "CI/CD", "Incident Management"],
+    "years_of_experience": 9,
+    "bio": "Darius builds systems that stay available at scale and restores confidence with observability-first incident workflows. He has led platform hardening projects and automated recovery processes across multi-cloud infrastructure.",
+    "email": "darius.chen@example.com"
+  },
+  {
+    "id": "cand-018",
+    "name": "Elena Rossi",
+    "current_role": "Frontend Architect",
+    "skills": ["React", "TypeScript", "Design Systems", "Performance Optimization", "Accessibility", "Micro-frontend Architecture"],
+    "years_of_experience": 11,
+    "bio": "Elena designs scalable frontend foundations and mentors teams on maintainable component architecture. She has enabled better product velocity by formalizing standards for UI libraries, testing, and cross-team collaboration.",
+    "email": "elena.rossi@example.com"
+  },
+  {
+    "id": "cand-019",
+    "name": "Samuel Jones",
+    "current_role": "Data Analytics Manager",
+    "skills": ["Looker", "SQL", "Analytics Strategy", "Data Governance", "Dashboarding", "Stakeholder Communication"],
+    "years_of_experience": 10,
+    "bio": "Samuel leads analytics teams to deliver reliable decision-support metrics and reporting. He has built measurement frameworks and data governance practices that align analytics outputs with business goals.",
+    "email": "samuel.jones@example.com"
+  },
+  {
+    "id": "cand-020",
+    "name": "Priyanka Reddy",
+    "current_role": "Cybersecurity Analyst",
+    "skills": ["SIEM", "Incident Response", "Vulnerability Management", "Cloud Security", "Phishing Simulations", "Compliance"],
+    "years_of_experience": 7,
+    "bio": "Priyanka protects enterprise environments through threat detection and security operations. She has created automated alerting rules and coordinated remediation workflows across engineering and IT teams.",
+    "email": "priyanka.reddy@example.com"
+  },
+  {
+    "id": "cand-021",
+    "name": "Aaron Brooks",
+    "current_role": "iOS Engineer",
+    "skills": ["Swift", "UIKit", "SwiftUI", "Core Data", "App Architecture", "Performance Profiling"],
+    "years_of_experience": 6,
+    "bio": "Aaron builds polished iOS experiences with a focus on usability and reliability. He has shipped consumer-facing apps with modern native architecture and strong test coverage.",
+    "email": "aaron.brooks@example.com"
+  },
+  {
+    "id": "cand-022",
+    "name": "Nina Park",
+    "current_role": "Content Strategist",
+    "skills": ["Content Strategy", "SEO", "Copywriting", "UX Writing", "Information Architecture", "Editorial Planning"],
+    "years_of_experience": 8,
+    "bio": "Nina creates content that clarifies product value and helps users complete tasks faster. She has defined brand voice systems and documentation programs for product and marketing teams.",
+    "email": "nina.park@example.com"
+  },
+  {
+    "id": "cand-023",
+    "name": "Jason Rivera",
+    "current_role": "Sales Engineer",
+    "skills": ["Solution Design", "Technical Demos", "CRM", "Customer Onboarding", "Product Enablement", "Cloud Platforms"],
+    "years_of_experience": 7,
+    "bio": "Jason partners with sales and product teams to translate technical value into customer outcomes. He has enabled dozens of enterprise opportunities by designing tailored solution architectures and proof-of-concept demonstrations.",
+    "email": "jason.rivera@example.com"
+  },
+  {
+    "id": "cand-024",
+    "name": "Aisha Hassan",
+    "current_role": "Business Operations Lead",
+    "skills": ["Process Improvement", "Program Management", "Data Analysis", "Cross-functional Collaboration", "Budgeting", "Change Management"],
+    "years_of_experience": 9,
+    "bio": "Aisha improves operational efficiency and alignment across growth-stage teams. She has led rollout plans for new tooling, optimized recurring planning cycles, and ensured teams meet their delivery goals.",
+    "email": "aisha.hassan@example.com"
+  },
+  {
+    "id": "cand-025",
+    "name": "Noelle Kim",
+    "current_role": "Full Stack Developer",
+    "skills": ["Vue.js", "Node.js", "Prisma", "PostgreSQL", "Tailwind CSS", "API Design"],
+    "years_of_experience": 5,
+    "bio": "Noelle delivers product experiences from database to browser with product-minded execution. She has shipped web apps for fintech and marketplace businesses using efficient API patterns and responsive UIs.",
+    "email": "noelle.kim@example.com"
+  },
+  {
+    "id": "cand-026",
+    "name": "Khalid Mansour",
+    "current_role": "Cloud Solutions Architect",
+    "skills": ["AWS", "Azure", "Terraform", "Serverless", "Security Architecture", "Cost Optimization"],
+    "years_of_experience": 12,
+    "bio": "Khalid designs cloud architectures that balance scalability, security, and cost. He has led enterprise migrations and defined infrastructure standards for cross-functional engineering teams.",
+    "email": "khalid.mansour@example.com"
+  },
+  {
+    "id": "cand-027",
+    "name": "Grace Lee",
+    "current_role": "Data Product Manager",
+    "skills": ["Data Strategy", "Roadmapping", "Analytics", "Machine Learning", "Stakeholder Alignment", "KPI Definition"],
+    "years_of_experience": 8,
+    "bio": "Grace defines data products that make analytics and ML actionable for business users. She has driven product launches that connected analytics teams with revenue and customer success goals.",
+    "email": "grace.lee@example.com"
+  },
+  {
+    "id": "cand-028",
+    "name": "Owen Mitchell",
+    "current_role": "Accessibility Engineer",
+    "skills": ["Accessibility Audits", "WCAG", "React", "Screen Reader Testing", "Inclusive Design", "Front-end Development"],
+    "years_of_experience": 7,
+    "bio": "Owen ensures digital products work for all users by embedding accessibility into development workflows. He has collaborated with design and engineering teams to remediate barriers and ship accessible experiences.",
+    "email": "owen.mitchell@example.com"
+  },
+  {
+    "id": "cand-029",
+    "name": "Taylor Morgan",
+    "current_role": "Growth Product Manager",
+    "skills": ["Growth Strategy", "A/B Testing", "Analytics", "Funnel Optimization", "Experiment Design", "Cross-functional Leadership"],
+    "years_of_experience": 6,
+    "bio": "Taylor drives product growth through hypothesis-led experimentation and data-informed prioritization. She has scaled acquisition and retention initiatives by aligning product changes with measurable business metrics.",
+    "email": "taylor.morgan@example.com"
+  },
+  {
+    "id": "cand-030",
+    "name": "Sofia Martinez",
+    "current_role": "Technical Writer",
+    "skills": ["API Documentation", "Developer Experience", "Markdown", "Structured Content", "DocTools", "Knowledge Base Management"],
+    "years_of_experience": 5,
+    "bio": "Sofia creates clear technical content that helps developers onboard faster and support teams deliver better outcomes. She has authored developer guides, API docs, and internal knowledge resources for engineering and product teams.",
+    "email": "sofia.martinez@example.com"
+  }
+]
